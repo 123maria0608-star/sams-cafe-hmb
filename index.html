@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sam's Cafe — Half Moon Bay Breakfast & Lunch</title>
+  <meta name="description" content="Sam's Cafe in Half Moon Bay, CA — a beloved coastal diner serving fresh breakfast and lunch daily 8AM–2PM. Famous for clam chowder, fresh-squeezed OJ, and friendly service.">
+  <link rel="canonical" href="https://samscafehmb.com/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Sam's Cafe",
+    "image": "https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AU_ZVEHUTfEy-iP52nrMU_EgW85GyxfRfxDEyparXvosQ2ANmkmlQDoF-z7TZZpQf6Tgvb30w5JDAnq6&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "210 San Mateo Rd",
+      "addressLocality": "Half Moon Bay",
+      "addressRegion": "CA",
+      "postalCode": "94019",
+      "addressCountry": "US"
+    },
+    "telephone": "(650) 726-3167",
+    "url": "http://samscafehmb.com/",
+    "servesCuisine": "American",
+    "priceRange": "$$",
+    "openingHours": "Mo-Su 08:00-14:00",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "272"
+    }
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ocean: #2B5F75;
+      --ocean-dark: #1a3d4f;
+      --ocean-light: #3d7a93;
+      --sand: #E8D5B0;
+      --sand-light: #f5eed8;
+      --warm-white: #FDFAF4;
+      --fog: #8FAAB5;
+      --text: #2c2c2c;
+      --text-muted: #6b7c84;
+      --accent: #C0672A;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      background: var(--warm-white);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(27, 61, 79, 0.96);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 40px;
+      height: 64px;
+    }
+
+    .nav-logo {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      color: var(--sand);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--sand); }
+
+    /* HERO */
+    .hero {
+      margin-top: 64px;
+      height: calc(100vh - 64px);
+      min-height: 560px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      background: var(--ocean-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 64px;
+      position: relative;
+    }
+
+    .hero-content::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--sand), var(--accent));
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--fog);
+      margin-bottom: 16px;
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.6rem, 4vw, 4.2rem);
+      color: var(--sand);
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 36px;
+      font-weight: 300;
+      max-width: 380px;
+      line-height: 1.7;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--sand-light);
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+    }
+
+    .rating-badge {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: white;
+      padding: 14px 32px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.1s;
+    }
+
+    .btn-primary:hover { background: #a85522; transform: translateY(-1px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--sand);
+      border: 2px solid var(--sand);
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .btn-outline:hover { background: var(--sand); color: var(--ocean-dark); }
+
+    .hero-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(27,61,79,0.15) 0%, transparent 60%);
+    }
+
+    /* MARQUEE STRIP */
+    .marquee-strip {
+      background: var(--ocean);
+      color: var(--sand);
+      padding: 14px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      animation: marquee 28s linear infinite;
+    }
+
+    .marquee-track span {
+      margin: 0 40px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .marquee-track span::before {
+      content: '◆';
+      color: var(--accent);
+      margin-right: 40px;
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    /* ABOUT */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      min-height: 520px;
+    }
+
+    .about-photo {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .about-content {
+      background: var(--sand-light);
+      padding: 72px 64px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 14px;
+    }
+
+    .about-content h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--ocean-dark);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+
+    .about-content p {
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.8;
+      margin-bottom: 20px;
+      font-weight: 300;
+    }
+
+    .highlight-quote {
+      border-left: 4px solid var(--ocean);
+      padding-left: 20px;
+      margin: 24px 0;
+      font-family: 'Libre Baskerville', serif;
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--ocean-dark);
+      line-height: 1.6;
+    }
+
+    /* GALLERY */
+    .gallery-section {
+      padding: 80px 0 0;
+      background: var(--warm-white);
+    }
+
+    .section-header {
+      text-align: center;
+      padding: 0 40px 48px;
+    }
+
+    .section-header h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--ocean-dark);
+      margin-bottom: 12px;
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 300px 220px 260px;
+      gap: 6px;
+    }
+
+    .photo-grid img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .photo-grid .span2 {
+      grid-column: span 2;
+    }
+
+    .photo-grid > div {
+      overflow: hidden;
+    }
+
+    .photo-grid > div:hover img {
+      transform: scale(1.04);
+    }
+
+    /* SPECIALTIES */
+    .specialties {
+      background: var(--ocean-dark);
+      padding: 80px 40px;
+      text-align: center;
+    }
+
+    .specialties .section-label { color: var(--fog); }
+
+    .specialties h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
+      color: var(--sand);
+      margin-bottom: 16px;
+    }
+
+    .specialties > p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 56px;
+      font-size: 1.05rem;
+      font-weight: 300;
+    }
+
+    .specialty-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .specialty-card {
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 32px 28px;
+      text-align: left;
+      transition: background 0.2s;
+    }
+
+    .specialty-card:hover {
+      background: rgba(255,255,255,0.11);
+    }
+
+    .specialty-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+
+    .specialty-card h3 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.15rem;
+      color: var(--sand);
+      margin-bottom: 10px;
+    }
+
+    .specialty-card p {
+      color: rgba(255,255,255,0.6);
+      font-size: 0.92rem;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* REVIEWS */
+    .reviews {
+      padding: 80px 40px;
+      background: var(--sand-light);
+    }
+
+    .reviews .section-header { padding-bottom: 48px; }
+
+    .stars {
+      color: #E8A020;
+      font-size: 1.05rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .review-card {
+      background: white;
+      border-radius: 8px;
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: box-shadow 0.2s;
+    }
+
+    .review-card:hover {
+      box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+    }
+
+    .review-card p {
+      font-size: 0.95rem;
+      color: var(--text);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 16px;
+      font-weight: 300;
+    }
+
+    .reviewer {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--ocean);
+    }
+
+    /* HOURS & LOCATION */
+    .info-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 480px;
+    }
+
+    .hours-panel {
+      background: var(--warm-white);
+      padding: 72px 64px;
+    }
+
+    .hours-panel h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.9rem;
+      color: var(--ocean-dark);
+      margin-bottom: 32px;
+    }
+
+    .hours-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 36px;
+    }
+
+    .hours-table tr td {
+      padding: 10px 0;
+      font-size: 0.97rem;
+      border-bottom: 1px solid rgba(0,0,0,0.07);
+    }
+
+    .hours-table tr td:first-child {
+      font-weight: 600;
+      color: var(--ocean);
+      width: 120px;
+    }
+
+    .hours-table tr td:last-child {
+      color: var(--text-muted);
+    }
+
+    .everyday-note {
+      background: var(--ocean);
+      color: white;
+      padding: 14px 20px;
+      border-radius: 6px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .contact-block {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.97rem;
+    }
+
+    .contact-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--ocean-dark);
+      color: var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+    }
+
+    .contact-item a {
+      color: var(--ocean);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .contact-item a:hover { text-decoration: underline; }
+
+    .map-panel {
+      position: relative;
+    }
+
+    .map-panel iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--ocean-dark);
+      color: rgba(255,255,255,0.6);
+      text-align: center;
+      padding: 36px 40px;
+    }
+
+    footer strong {
+      color: var(--sand);
+      font-family: 'Libre Baskerville', serif;
+    }
+
+    footer p { font-size: 0.88rem; line-height: 1.8; }
+
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; height: auto; }
+      .hero-content { padding: 48px 28px; }
+      .hero-photo { height: 300px; }
+      .about { grid-template-columns: 1fr; }
+      .about-photo { height: 300px; }
+      .about-content { padding: 48px 28px; }
+      .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .photo-grid .span2 { grid-column: span 2; }
+      .info-section { grid-template-columns: 1fr; }
+      .hours-panel { padding: 48px 28px; }
+      .map-panel { height: 380px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Sam's Cafe</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#menu">Menu</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#visit">Visit</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">Half Moon Bay, California</p>
+    <h1>Morning Flavor on the Coast</h1>
+    <p class="hero-tagline">A beloved Half Moon Bay diner where fresh ingredients, warm service, and the smell of the ocean make every breakfast feel like the best one yet.</p>
+    <div class="hero-badges">
+      <span class="badge rating-badge">★ 4.5 &nbsp;·&nbsp; 272 Reviews</span>
+      <span class="badge">Open Daily 8AM – 2PM</span>
+      <span class="badge">Since Forever</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#visit" class="btn-primary">Plan Your Visit</a>
+      <a href="tel:6507263167" class="btn-outline">(650) 726-3167</a>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AU_ZVEHUTfEy-iP52nrMU_EgW85GyxfRfxDEyparXvosQ2ANmkmlQDoF-z7TZZpQf6Tgvb30w5JDAnq6&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe interior">
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-strip" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Fresh-Squeezed Orange Juice</span>
+    <span>New England Clam Chowder</span>
+    <span>Breakfast & Lunch Daily</span>
+    <span>Half Moon Bay's Favorite Diner</span>
+    <span>Buttered French Bread</span>
+    <span>Cozy Coastal Atmosphere</span>
+    <span>Fresh-Squeezed Orange Juice</span>
+    <span>New England Clam Chowder</span>
+    <span>Breakfast & Lunch Daily</span>
+    <span>Half Moon Bay's Favorite Diner</span>
+    <span>Buttered French Bread</span>
+    <span>Cozy Coastal Atmosphere</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-photo">
+    <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1000&photo_reference=AU_ZVEEKUcQRiouIa-RWKHqrlsSreJ3T0OxFW-RqaOzbSdEON2lgGknVlSwinjNTmVapcU5PKjZq3AeT&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe food">
+  </div>
+  <div class="about-content">
+    <p class="section-label">About Sam's Cafe</p>
+    <h2>A Half Moon Bay Institution</h2>
+    <p>Tucked right along the coast in Half Moon Bay, Sam's Cafe has been a morning ritual for locals and a welcome discovery for visitors. It's the kind of place where you sit down, breathe in the salty air, and feel at home before your coffee even arrives.</p>
+    <blockquote class="highlight-quote">"Simple, cozy diner with delicious breakfast options. Service was friendly and we enjoyed everything we ordered."</blockquote>
+    <p>The menu is focused and honest — classic breakfast plates, fresh-squeezed juices, and a clam chowder that regulars swear is the real deal. Everything's made with care and served without pretense.</p>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery-section" id="gallery">
+  <div class="section-header">
+    <p class="section-label">Photos</p>
+    <h2>Inside Sam's</h2>
+    <p>From the first cup of coffee to the last bite of chowder.</p>
+  </div>
+  <div class="photo-grid">
+    <div class="span2">
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AU_ZVEHi2aObAEi8lQOjp8OzWjXRXTbVMMKxMCU4MFOLTHG_rR2x2HaK9WxslpWp6149XOOlSw2JIFL4&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe food and atmosphere">
+    </div>
+    <div>
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AU_ZVEHfA4ef7elEsKx5nWrGWoggQu6wuxofQnt_s2VR0w_RUK0RQP7BxW8XppeoMwwVzfFUZhCihqh&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe dish">
+    </div>
+    <div>
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AU_ZVEGwX8Ky3owLUb-9Hllw1MFMky4qAtjq_95D9Ov1SKo_Os9gx08yJk8atnezyg80g0TKhw1Vu5Bf&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe menu item">
+    </div>
+    <div>
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AU_ZVEG73vLqOQY7lyDkNXZ4DfArrvjv0GrMDQoYmUT8gyykpRtz6wLBWjuMtHkmxey7f1ZSt6YAX4EA&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe breakfast">
+    </div>
+    <div>
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AU_ZVEEssfrc2lNIBfeGiCPHvHsm7wqhjHdpxTsBO8nirwoPVpKNU9fU5r4D8Rw4A7SvmAkqN9w1qwsm&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe interior">
+    </div>
+    <div class="span2">
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=1200&photo_reference=AU_ZVEH-LOJBPeCMtDj0eqqBVINGI4Y0SsOR0BCmHMSZ6IhnEjZK1GoyaTBlslM8yzOIcClNOjZPw2IH&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe clam chowder">
+    </div>
+    <div>
+      <img src="https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photo_reference=AU_ZVEEvzL5u1xuAJfBmkAS5FvyLxv7WSkgEizdNDglYjfxizumcMpyiXcDd-6ixfbSC1A9I6A18xwov&key=AIzaSyCn2DKpw07hDdQPq-5pFdedLpq5RHSg854" alt="Sam's Cafe coastal view">
+    </div>
+  </div>
+</section>
+
+<!-- SPECIALTIES -->
+<section class="specialties" id="menu">
+  <p class="section-label">What We're Known For</p>
+  <h2>House Favorites</h2>
+  <p>Simple, honest food made with quality ingredients — no shortcuts.</p>
+  <div class="specialty-grid">
+    <div class="specialty-card">
+      <div class="specialty-icon">🥣</div>
+      <h3>New England Clam Chowder</h3>
+      <p>Rich, creamy, packed with clams, potatoes, bacon, and celery. Served with warm buttered French bread. Exactly what a classic chowder should be.</p>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🍊</div>
+      <h3>Fresh-Squeezed Orange Juice</h3>
+      <p>Squeezed to order, bright and sunny. The kind of OJ that makes you wonder why you ever settled for the carton.</p>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">🍳</div>
+      <h3>Breakfast Classics</h3>
+      <p>Eggs done right, huevos rancheros, omelets, and morning plates — everything you need to start a Half Moon Bay morning the proper way.</p>
+    </div>
+    <div class="specialty-card">
+      <div class="specialty-icon">☕</div>
+      <h3>A Real Diner Atmosphere</h3>
+      <p>No reservations, no fuss. Walk in, grab a seat, and let the friendly staff take it from there. This is what neighborhood dining looks like.</p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="reviews" id="reviews">
+  <div class="section-header">
+    <p class="section-label">Google Reviews</p>
+    <h2>What People Are Saying</h2>
+    <div class="stars">★★★★½</div>
+    <p>4.5 out of 5 · 272 reviews on Google</p>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Simple, cozy diner with delicious breakfast options. Service was friendly and we enjoyed everything we ordered. The huevos rancheros were excellent — highly recommend."</p>
+      <span class="reviewer">— Adalyn L.</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Great chowder. Can really taste the potatoes, clams, bacon and celery. Rich creamy base. Exactly what a classic chowder should be — served with warm buttered French bread."</p>
+      <span class="reviewer">— Vineet S.</span>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p>"Food and service are excellent. Cozy and friendly atmosphere. One of those spots you come back to every time you're passing through the coast."</p>
+      <span class="reviewer">— Samantha N.</span>
+    </div>
+  </div>
+</section>
+
+<!-- HOURS & MAP -->
+<section class="info-section" id="visit">
+  <div class="hours-panel">
+    <p class="section-label">Hours & Contact</p>
+    <h2>Come Visit Us</h2>
+
+    <div class="everyday-note">Open Every Day — 8:00 AM to 2:00 PM</div>
+
+    <table class="hours-table">
+      <tr><td>Monday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Tuesday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Wednesday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Thursday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Friday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Saturday</td><td>8:00 AM – 2:00 PM</td></tr>
+      <tr><td>Sunday</td><td>8:00 AM – 2:00 PM</td></tr>
+    </table>
+
+    <div class="contact-block">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <span>210 San Mateo Rd, Half Moon Bay, CA 94019</span>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <a href="tel:6507263167">(650) 726-3167</a>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🌐</div>
+        <a href="http://samscafehmb.com/" target="_blank" rel="noopener">samscafehmb.com</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="map-panel">
+    <iframe
+      src="https://maps.google.com/maps?q=Sam%27s+Cafe+210+San+Mateo+Rd+Half+Moon+Bay+CA+94019&output=embed&z=15"
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="Sam's Cafe location map">
+    </iframe>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p><strong>Sam's Cafe</strong></p>
+  <p>210 San Mateo Rd · Half Moon Bay, CA 94019 · (650) 726-3167</p>
+  <p style="margin-top: 8px; font-size: 0.8rem; opacity: 0.5;">Open Daily 8AM–2PM</p>
+</footer>
+
+</body>
+</html>
